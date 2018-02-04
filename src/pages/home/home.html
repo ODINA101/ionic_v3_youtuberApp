@@ -1,14 +1,25 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
+  <ion-navbar color="danger">
+    <ion-title >
+      nika kabula app
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+
+
+  <ion-list *ngFor="let v of videos">
+  <iframe *ngIf="loaded == false;else elseBlock" (load)="onLoad" width="100%" height="250" [src]="v.id.videoId | youtube" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  <ng-template #elseBlock>
+  <ion-spinner name="circles"  align-center></ion-spinner>
+</ng-template>  
+    </ion-list>
+
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+     
 </ion-content>
