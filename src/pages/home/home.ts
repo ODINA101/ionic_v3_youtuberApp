@@ -40,8 +40,9 @@ this.loaded = true;
   doInfinite(infiniteScroll) {
     
       setTimeout(() => {
-      this.http.get('https://www.googleapis.com/youtube/v3/search?order=date&pageToken='+ this.data.nextPageToken +'&part=snippet&type=videos&channelId=UCtz3sMM1qPIm1WrbhaJexaA&maxResults=5&key=AIzaSyDyIXJHb0clHIW60pG8OR_G8XRuaUtVqHk').map(res => res.json()).subscribe(data2 => {
+      this.http.get('https://www.googleapis.com/youtube/v3/search?order=date&pageToken='+ this.data.nextPageToken +'&part=snippet&type=videos&channelId=UCtz3sMM1qPIm1WrbhaJexaA&maxResults=2&key=AIzaSyDyIXJHb0clHIW60pG8OR_G8XRuaUtVqHk').map(res => res.json()).subscribe(data2 => {
        console.log(data2.items);
+       this.data = data2;
        for(var i=0;i<data2.items.length;i++) {
          console.log(this.videos.push(data2.items[i]));
        }
